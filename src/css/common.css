@@ -16,3 +16,15 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.start-btn {
+  margin: 300px auto 40px auto;
+  padding: 30px;
+  display: block;
+}
+
+.stop-btn {
+  margin: 0 auto;
+  padding: 30px;
+  display: block;
+}

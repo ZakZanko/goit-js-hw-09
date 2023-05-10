@@ -16,15 +16,19 @@ function SubminPromise(e) {
 
   let delay = DelayV.valueAsNumber;
 
-  for (let i = 0; i <= amountValue; i++) {
-    createPromise(i, delay)
-      .then(({ position, delay }) => {
-        Notiflix.Notify.success(`✅ Fulfilled promise ${i} in ${delay}ms`);
-      })
-      .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(`❌ Rejected promise ${i} in ${delay}ms`);
-      });
-    delay += stepValue;
+  if (amountValue > 0 && stepValue > 0 && delay > 0) {
+    for (let i = 0; i <= amountValue; i++) {
+      createPromise(i, delay)
+        .then(({ position, delay }) => {
+          Notiflix.Notify.success(`✅ Fulfilled promise ${i} in ${delay}ms`);
+        })
+        .catch(({ position, delay }) => {
+          Notiflix.Notify.failure(`❌ Rejected promise ${i} in ${delay}ms`);
+        });
+      delay += stepValue;
+    }
+  } else {
+    return Notiflix.Notify.failure(`❌ Write  >= 0`);
   }
 }
 

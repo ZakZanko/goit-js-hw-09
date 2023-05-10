@@ -36,7 +36,7 @@ const options = {
       function countdownTime() {
         timer = setInterval(() => {
           startBtn.disabled = true;
-
+          dateChosen.disabled = true;
           // https://stackoverflow.com/questions/4310953/invalid-date-in-safari
 
           const dateChoosenMs = new Date(
@@ -55,6 +55,7 @@ const options = {
           if (timeLeft < 1000) {
             clearInterval(timer);
             startBtn.disabled = false;
+            dateChosen.disabled = true;
           }
         }, 1000);
       }

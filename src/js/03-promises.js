@@ -10,7 +10,9 @@ function onSubmitPromise(e) {
 
   const { delay, step, amount } = e.currentTarget.elements;
 
-  if (amount.value > 0 || step.value > 0 || delay.value > 0) {
+  if (amount.value <= 0 || step.value < 0 || delay.value < 0) {
+    Notiflix.Notify.failure(`❌ Write number > 0`);
+  } else {
     for (let i = 0; i < amount.value; i++) {
       let position = i + 1;
       const delays = Number(delay.value) + step.value * i;
@@ -23,8 +25,6 @@ function onSubmitPromise(e) {
           Notiflix.Notify.failure(`❌ Rejected promise ${i} in ${delay}ms`);
         });
     }
-  } else {
-    Notiflix.Notify.failure(`❌ Write number > 0`);
   }
   e.currentTarget.reset();
 }
